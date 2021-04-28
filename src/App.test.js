@@ -6,17 +6,21 @@ describe('Test show card component',()=>{
     const obj = {
       name:'Brazil',
       url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
-      capital:'São Paulo'
+      capital:'Brasília'
     }
 
-    render(<Card name={`${obj.name}`} url={obj.url}/>)
+    render(<Card name={`${obj.name}`} url={obj.url} capital={obj.capital}/>)
 
     const container = screen.getByTestId(obj.name)
 
-    const image = container.querySelector('img')
-    const spanNome = container.querySelector(`span #${obj.name}x`)
 
-    expect(spanNome).toHaveTextContent(obj.name)
+    const image = container.querySelector('img')
+    const spanNome = document.getElementById(`${obj.name}x`)
+    const spanCapital = document.getElementById(`${obj.capital}x`)
+
+
+    expect(spanNome).toHaveTextContent(`Nome: ${obj.name}`)
+    expect(spanCapital).toHaveTextContent(`Capital: ${obj.capital}`)
     expect(image.getAttribute('src')).toEqual(obj.url)
 
   })

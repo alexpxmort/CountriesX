@@ -4,94 +4,19 @@ import {withRouter} from 'react-router-dom'
 
 import React,{useCallback, useEffect,useRef} from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
-import {client} from '../../config/client-graphql'
 import { useState } from 'react';
 import {CardListCountries}  from '../../components/card-list-countries/index'
 import SearchBox from '../../components/search-box';
 import { Button } from '@material-ui/core';
+import { getCounries } from '../../services/county.service';
+import Spinner from '../../components/loading/loading.compont';
 
-const COUNTRIES = gql`
-  {
-    Country {
-        name
-        nativeName
-        alpha2Code
-        alpha3Code
-        area
-        population
-        populationDensity
-        capital
-        demonym
-        gini
-        location {
-          latitude
-          longitude
-        }
-        numericCode
-        subregion {
-          name
-          region {
-            name
-          }
-        }
-        officialLanguages {
-          iso639_1
-          iso639_2
-          name
-          nativeName
-        }
-        currencies {
-          name
-          symbol
-        }
-        regionalBlocs {
-          name
-          acronym
-          otherAcronyms {
-            name
-          }
-          otherNames {
-            name
-          }
-        }
-        flag {
-          emoji
-          emojiUnicode
-          svgFile
-        }
-        topLevelDomains {
-          name
-        }
-        callingCodes {
-          name
-        }
-        alternativeSpellings {
-          name
-        }
-      }
-  }
-`;
-
-
-const REGIONS = gql`
-  {
-    Region(orderBy: name_asc) {
-      name
-      children: subregions(orderBy: name_asc) {
-        name
-        children: countries(orderBy: name_asc) {
-          name
-        }
-      }
-    }
-  }
-`;
 
 
 const HomePage = ({history})=>{
 
     const[data,setData] = useState([])
+    const[loading,setLoading]  = useState(true)
     const[searchField,setSearchField] = useState('')
     const refInput = useRef(null)
    
@@ -99,16 +24,11 @@ const HomePage = ({history})=>{
         initial()
     });
 
-    const initial = ()=>{
+    const initial = async ()=>{
       try{
-        client.query({
-          query:COUNTRIES
-      }).then(res => {
-          const{Country} = res.data;
-
-         setData(Country)
-
-      })
+        let data = await getCounries()
+        setData(data)
+        setLoading(false)
       }catch(err){
         console.log(err)
       }
@@ -119,25 +39,29 @@ const HomePage = ({history})=>{
     );
 
 
-  
-
     const  handleClick= useCallback(()=>{
       let search = refInput.current.querySelector('input').value
       
-
       setSearchField(search)
 
     },[])
+
 
     return (
         <div data-testid="container_card">
             <h2 style={{marginLeft:10}}>Total of Countries: {filteredData.length}</h2>
             <SearchBox placeholder={'Procurar por Nome:'} ref={refInput}/>
-            <Button style={{marginLeft:10,marginTop:15,padding:15}} variant="contained" color="primary" type={'button'} onClick={handleClick}>
+            <Button  style={{marginLeft:10,marginTop:15,padding:15}} variant="contained" color="primary" type={'button'} onClick={handleClick}>
               Buscar
             </Button>
           
-          <CardListCountries countries={filteredData}/>
+          {
+            (loading)?(
+              <Spinner/>
+            ):(
+              <CardListCountries countries={filteredData}/>
+            )
+          }
         </div>
     )
 }
