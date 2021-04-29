@@ -9,8 +9,6 @@ export const getCounries  = async ()=>{
         query:COUNTRIES
     });
 
-    console.log(resp)
-
     const data = await resp.data;
 
     const{Country} = data

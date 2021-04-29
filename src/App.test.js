@@ -24,5 +24,5 @@ describe('Test show card component',()=>{
     expect(image.getAttribute('src')).toEqual(obj.url)
 
   })
-  
+
 })
