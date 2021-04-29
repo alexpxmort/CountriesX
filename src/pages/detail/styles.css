@@ -6,10 +6,6 @@
   margin-top: 20px;
 }
 
-.container_card:hover {
-  cursor: pointer;
-}
-
 img {
   width: 350px;
   margin-bottom: 10px;

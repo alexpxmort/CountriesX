@@ -1,6 +1,5 @@
 
 
-import {withRouter} from 'react-router-dom'
 
 import React,{useCallback, useEffect,useRef} from 'react';
 import { useQuery } from '@apollo/react-hooks';
@@ -38,6 +37,10 @@ const HomePage = ({history})=>{
       country.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
+    const goDetail = (code)=>{
+      history.push(`/detail/${code}`)
+    }
+
 
     const  handleClick= useCallback(()=>{
       let search = refInput.current.querySelector('input').value
@@ -59,12 +62,12 @@ const HomePage = ({history})=>{
             (loading)?(
               <Spinner/>
             ):(
-              <CardListCountries countries={filteredData}/>
+              <CardListCountries countries={filteredData} onClick={goDetail}/>
             )
           }
         </div>
     )
 }
 
-export default withRouter(HomePage);
+export default HomePage;
 

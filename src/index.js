@@ -7,10 +7,13 @@ import RouterX from './routes/router.component';
 import { ApolloProvider } from '@apollo/react-hooks';
 import {client} from '../src/config/client-graphql'
 
+
 ReactDOM.render(
-  <BrowserRouter>
+ <ApolloProvider client={client}>
+    <BrowserRouter>
      <RouterX/>
    </BrowserRouter>
+ </ApolloProvider>
 ,
   document.getElementById('root')
 );
