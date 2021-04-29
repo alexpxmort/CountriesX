@@ -45,18 +45,7 @@ const HomePage = ({history})=>{
       const [updateCountry] = useMutation(UPDATE_COUNTRY, { 
         update(cache, { data:{updateCountry} }) {
 
-          console.log('here')
-          cache.modify({
-            fields: {
-              countries(existingCountries = []) {
-                console.log(existingCountries)
-
-                let _arr =  [...existingCountries]
-
-                return [_arr];
-              }
-            }
-          });
+        
         }
       });
     

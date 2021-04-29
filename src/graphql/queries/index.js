@@ -11,6 +11,10 @@ export const COUNTRIES = gql`
         alpha3Code
         population
         capital
+        location {
+          latitude
+          longitude
+        }
         currencies {
           name
           symbol
