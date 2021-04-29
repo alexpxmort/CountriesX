@@ -6,6 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import RouterX from './routes/router.component';
 import { ApolloProvider } from '@apollo/react-hooks';
 import {client} from '../src/config/client-graphql'
+import { GET_COUNTRIES_CLIENT } from './graphql/queries';
+
+
+export const filter = client.cache.makeVar("");
+
+client.writeQuery({
+  query: GET_COUNTRIES_CLIENT,
+  data: {
+    countries: []
+  }
+});
+
 
 
 ReactDOM.render(
