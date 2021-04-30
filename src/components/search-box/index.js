@@ -1,4 +1,12 @@
 
+/**
+ * Componente de Search
+ * props placeholder
+ * e ref
+ */
+
+
+
 import {TextField,FormGroup} from '@material-ui/core';
 import {forwardRef} from 'react'
 

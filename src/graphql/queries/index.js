@@ -1,5 +1,37 @@
+/**
+ * Queries
+ * 
+ */
+
+
+
 import { gql } from 'apollo-boost';
 
+
+
+export const COUNTRIES = gql`
+  {
+    Country {
+        name
+        nativeName
+        alpha2Code
+        alpha3Code
+        population
+        capital
+        location {
+          latitude
+          longitude
+        }
+        currencies {
+          name
+          symbol
+        }
+        flag {
+          svgFile
+        }
+      }
+  }
+`;
 
 export const GET_COUNTRIES_CLIENT = gql`
     {

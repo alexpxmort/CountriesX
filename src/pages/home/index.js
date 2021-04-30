@@ -1,4 +1,9 @@
 
+/**
+ * Página de Home do País
+ * com Listagem e Pesquisa dos paises por nome
+ * 
+ */
 
 
 import React,{useCallback, useEffect,useRef} from 'react';
@@ -12,6 +17,7 @@ import Spinner from '../../components/loading/loading.compont';
 import { GET_COUNTRIES_CLIENT } from '../../graphql/queries';
 import {empty} from '../../utils/string.utils'
 import { client } from '../../config/client-graphql';
+import Total from '../../components/total';
 
 
 const HomePage = ({history})=>{
@@ -61,7 +67,7 @@ const HomePage = ({history})=>{
 
     return (
         <div data-testid="container_card">
-            <h2 style={{marginLeft:10}}>Total of Countries: {filteredData.length}</h2>
+            <Total label={'Countries'} total={filteredData.length}/>
             <SearchBox placeholder={'Procurar por Nome:'} ref={refInput}/>
             <Button  style={{marginLeft:10,marginTop:15,padding:15}} variant="contained" color="primary" type={'button'} onClick={handleClick}>
               Buscar

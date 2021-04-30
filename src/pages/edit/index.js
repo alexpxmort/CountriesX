@@ -1,5 +1,5 @@
   /**
- * Página de Editar Country
+ * Página de Edit do País
  * 
  */
     
@@ -12,6 +12,7 @@
    import './styles.css'
    import {UPDATE_COUNTRY} from '../../graphql/mutations'
     import {useMutation} from '@apollo/client'
+import Message from "../../components/msg_alerts/msg_alerts";
 
    
    
@@ -95,11 +96,11 @@
    
        const handleSubmit =  (data)=>{
    
-        //    if(isNaN(data.)){
-        //        Message('Formato de Preço inválido!\n Digite novamente outro valor!','warning')
+           if(isNaN(data.area) || isNaN(data.population) ){
+               Message('Formato de dados inválidos!\nDigite Números nos campos de Área e População','warning')
    
-        //        return false
-        //    }
+               return false
+           }
         
             editCountry(data,code)
             setTimeout(()=>{

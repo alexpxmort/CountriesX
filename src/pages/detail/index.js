@@ -1,3 +1,13 @@
+/**
+ * Página de Detalhes do País
+ * para ver os markers do paises mais próximos
+ * reduza o zoom na tela
+ * 
+ */
+
+
+
+
 import React,{useEffect,useState} from 'react'
 import Spinner from '../../components/loading/loading.compont'
 import Map from '../../components/map'

@@ -1,3 +1,9 @@
+/**
+ * Testes dos Componentes
+ */
+
+
+
 import { render, screen } from '@testing-library/react';
 import Card from './components/card';
 import {CardListCountries} from './components/card-list-countries'
@@ -7,6 +13,7 @@ import {BrowserRouter} from 'react-router-dom'
 import { InputCustom } from './components/input-custom';
 import {Form} from '@unform/web'
 import FormCustom from './components/form/country.form';
+import Total from './components/total';
 
 const  renderWithRouter  = (ui,{route  ='/'} = {})=>{
   window.history.pushState({},'Test Page',route)
@@ -145,6 +152,18 @@ describe('Test components',()=>{
 
     expect(container.querySelector('input').getAttribute('value')).toEqual(_valSubmited)
    
+  })
+
+
+  it('show total component',async ()=>{
+    let _total = 100;
+    let _label = 'Countries';
+
+    render(<Total label={_label} total={_total}/>)
+
+    const container  = screen.getByTestId('total_test')
+
+    expect(container).toHaveTextContent(`Total of ${_label}: ${_total}`)
   })
 
 

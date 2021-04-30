@@ -1,3 +1,11 @@
+/**
+ * Mutations
+ * 
+ */
+
+
+
+
 import {gql} from '@apollo/client'
 import { GET_COUNTRIES_CLIENT } from '../queries'
 

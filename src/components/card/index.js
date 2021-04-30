@@ -1,4 +1,10 @@
-import React,{useEffect,useState} from 'react'
+
+/**
+ * Componente de Card do País
+ * 
+ */
+
+
 import { empty } from '../../utils/string.utils';
 
 import './styles.css'

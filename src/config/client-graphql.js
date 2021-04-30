@@ -1,3 +1,9 @@
+
+/**
+ * Configuração do client do apollo
+ */
+
+
 import {ApolloClient,InMemoryCache} from '@apollo/client';
 import { URL_REQUEST } from '../requests/api/api';
 import {typeDefs,resolvers} from '../graphql/mutations/index'

@@ -1,4 +1,13 @@
 
+/**
+ * Configuração inicial do React com ApolloProvider
+ * e configuração do cache inicial do apollo-client
+ * paar ser usado como local state management
+ * 
+ */
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import{BrowserRouter} from 'react-router-dom'
