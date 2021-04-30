@@ -4,8 +4,9 @@ import {CardListCountries} from './components/card-list-countries'
 import Spinner from './components/loading/loading.compont';
 import DetailPage from './pages/detail';
 import {BrowserRouter} from 'react-router-dom'
-
-
+import { InputCustom } from './components/input-custom';
+import {Form} from '@unform/web'
+import FormCustom from './components/form/country.form';
 
 const  renderWithRouter  = (ui,{route  ='/'} = {})=>{
   window.history.pushState({},'Test Page',route)
@@ -16,9 +17,6 @@ const  renderWithRouter  = (ui,{route  ='/'} = {})=>{
     }
   )
 }
-
-
-
 
 describe('Test components',()=>{
   it('show card',async ()=>{
@@ -80,6 +78,74 @@ describe('Test components',()=>{
     expect(container).toBeInTheDocument()
   })
 
+  it('show input custom',async ()=>{
+
+    let _name = 'nome';
+
+    render(<Form>
+      <InputCustom required name={_name} label="Nome" variant="outlined"  type={'text'}/>
+    </Form>)
+
+
+    const container = screen.getByTestId(`${_name}_input`)
+
+    let _val = '123';
+
+    expect(container.querySelector('input').getAttribute('name')).toEqual(_name)
+
+    container.querySelector('input').setAttribute('value',`${_val}`);
+
+    expect(container.querySelector('input').getAttribute('value')).toEqual(`${_val}`)
+
+   
+  })
+
+  it('show country form',async ()=>{
+
+    let _initialData = {
+      name:'Brazil',
+      capital:'Brasilia',
+      population:'13123',
+      area:'156156'
+    };
+
+    let qtdFields = 4;
+
+    let _valSubmited = 'submited';
+  
+
+    const handleSubmit = (data)=>{
+      container.querySelector('input').setAttribute('value',_valSubmited)
+    }
+
+    render( <FormCustom id={'teste'}  initialData ={_initialData} handleSubmit={handleSubmit}/>      )
+
+    const container = screen.getByTestId(`form_country`)
+
+    expect(container.querySelectorAll('input').length).toEqual(qtdFields)
+
+    let _arrFields = Array.from(container.querySelectorAll('input'));
+
+    for(var key in _initialData){
+      if(_initialData.hasOwnProperty(key)){
+
+       let _found =  _arrFields.filter((val)=>{
+          return  val.getAttribute('name') === key
+        })
+
+        if(_found.length > 0){
+          // eslint-disable-next-line jest/no-conditional-expect
+          expect(_found[0].value).toEqual(_initialData[key])
+        }
+      }
+     
+  }
+
+    container.querySelector('button').click()
+
+    expect(container.querySelector('input').getAttribute('value')).toEqual(_valSubmited)
+   
+  })
 
 
   it('show detail page',async ()=>{

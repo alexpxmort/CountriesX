@@ -1,5 +1,5 @@
-import {useMutation,useQuery,gql} from '@apollo/client'
-import { CLIENT_SIDE_COUNTRIES, GET_COUNTRIES_CLIENT } from '../queries'
+import {gql} from '@apollo/client'
+import { GET_COUNTRIES_CLIENT } from '../queries'
 
 
 
@@ -58,23 +58,3 @@ export const resolvers = {
         }
     }
 }
-
-
- const useUpdateCoutry  = ()=>{
-    const[updatedItem] = useMutation(UPDATE_COUNTRY,{
-        update(cache,{data:updatedItem}){
-            const {countries} = cache.readQuery({
-                query:CLIENT_SIDE_COUNTRIES
-            })
-
-            cache.writeQuery({
-                query:CLIENT_SIDE_COUNTRIES,
-                data:{
-                    countries:countries
-                }
-            })
-        }
-    })
-}
-
-export {useUpdateCoutry};

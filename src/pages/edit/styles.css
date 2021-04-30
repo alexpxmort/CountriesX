@@ -1,0 +1,17 @@
+#editImage {
+  width: 350px;
+  margin-bottom: 10px;
+  border-radius: 5%;
+  margin-left: 5em;
+}
+
+.container_card_edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: lightgray;
+}
+
+h1 {
+  margin-right: 20em;
+}

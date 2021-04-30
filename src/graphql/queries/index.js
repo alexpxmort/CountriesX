@@ -1,31 +1,6 @@
 import { gql } from 'apollo-boost';
 
 
-
-export const COUNTRIES = gql`
-  {
-    Country {
-        name
-        nativeName
-        alpha2Code
-        alpha3Code
-        population
-        capital
-        location {
-          latitude
-          longitude
-        }
-        currencies {
-          name
-          symbol
-        }
-        flag {
-          svgFile
-        }
-      }
-  }
-`;
-
 export const GET_COUNTRIES_CLIENT = gql`
     {
       countries @client
@@ -114,44 +89,3 @@ export const COUNTRIES_BY_ALPHA_CODE = gql`
     }
   }
 `;
-
-
-export const CLIENT_SIDE_COUNTRIES  = gql`
-  query Country{
-
-    getCountries @client{
-      name
-      nativeName
-      alpha2Code
-      alpha3Code
-      population
-      capital
-      currencies {
-        name
-        symbol
-      }
-      flag {
-        svgFile
-      }
-    }
-
-    Country{
-      name
-      nativeName
-      alpha2Code
-      alpha3Code
-      population
-      capital
-      currencies {
-        name
-        symbol
-      }
-      flag {
-        svgFile
-      }
-    }
-
-    
-  }
-
-`

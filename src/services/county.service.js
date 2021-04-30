@@ -1,6 +1,5 @@
 import {client} from '../config/client-graphql'
-import { COUNTRIES,COUNTRIES_BY_ALPHA_CODE,CLIENT_SIDE_COUNTRIES } from '../graphql/queries';
-import {gql} from 'apollo-boost'
+import { COUNTRIES,COUNTRIES_BY_ALPHA_CODE} from '../graphql/queries';
 
 
 

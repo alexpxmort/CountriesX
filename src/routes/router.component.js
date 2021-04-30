@@ -8,12 +8,13 @@
  import {Route,Switch} from 'react-router-dom';
  import HomePage from '../pages/home';
  import DetailPage from '../pages/detail'
- import {Teste} from '../teste'
+ import EditCountryPage from '../pages/edit';
  
  const  RouterX  = ()=>(
     <Switch>
         <Route exact component={HomePage} path="/"/>
         <Route  component={DetailPage} path="/detail/:code"/>
+        <Route  component={EditCountryPage} path="/edit/:code"/>
     </Switch>
  )
 

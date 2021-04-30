@@ -11,9 +11,7 @@ import { getCounries } from '../../services/county.service';
 import Spinner from '../../components/loading/loading.compont';
 import { GET_COUNTRIES_CLIENT } from '../../graphql/queries';
 import {empty} from '../../utils/string.utils'
-import {UPDATE_COUNTRY} from '../../graphql/mutations'
 import { client } from '../../config/client-graphql';
-import {useMutation} from '@apollo/client'
 
 
 const HomePage = ({history})=>{
@@ -43,9 +41,6 @@ const HomePage = ({history})=>{
   }
 
 
-      const [updateCountry] = useMutation(UPDATE_COUNTRY);
-    
-
     const filteredData  = (!empty(data) && !empty(data.countries))? data.countries.filter((country) => 
     country.name.toLowerCase().includes(searchField.toLowerCase())
   ):[];
@@ -56,10 +51,7 @@ const HomePage = ({history})=>{
 
 
     const  handleClick= useCallback(()=>{
-      // updateCountry({ variables: { alpha2Code: "AX",updatedCountry:{
-      //   'name':'Teste xx',
-      //   'capital':'xxx'
-      // } } });
+    
       let search = refInput.current.querySelector('input').value
       
       setSearchField(search)

@@ -3,10 +3,11 @@ import Spinner from '../../components/loading/loading.compont'
 import Map from '../../components/map'
 import { getCounriesByAlpha2Code } from '../../services/county.service'
 import {empty} from '../../utils/string.utils'
+import EditIcon from '@material-ui/icons/Edit';
 
 import './styles.css'
 
-const DetailPage  = ({match})=>{
+const DetailPage  = ({match,history})=>{
 
     const [ loading,setLoading] = useState(true)
     const[country,setCountry] = useState(null)
@@ -35,6 +36,9 @@ const DetailPage  = ({match})=>{
     }
 
   
+    const handleEdit = (code)=>{
+        history.push(`/edit/${code}`)
+    }
 
   
     if(loading){
@@ -58,6 +62,7 @@ const DetailPage  = ({match})=>{
                     )
                 })
                }
+               <EditIcon onClick={()=>handleEdit(code)} style={{cursor:'pointer'}}/>
                <Map country={country} latitude={country.location.latitude} longitude={country.location.longitude}/>
             </div>
         )
