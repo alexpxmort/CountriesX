@@ -16,7 +16,7 @@ import {useQuery} from '@apollo/react-hooks'
 import { empty } from '../../utils/string.utils';
 import { GET_COUNTRIES_CLIENT } from '../../graphql/queries'
 mapboxgl.workerClass = MapboxWorker;
-mapboxgl.accessToken = TOKEN_MAP_BOX.token;
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN || TOKEN_MAP_BOX;
 
 const Map = ({latitude,longitude,country}) => {
 
