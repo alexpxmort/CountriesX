@@ -46,8 +46,8 @@ const DetailPage  = ({match})=>{
             <div className='container_card_detail' data-testid={`${code}detail`} id={`${code}detail`}>
                <img src={country.flag.svgFile}/>
                <span id={`${country.name}detail`}>Nome: {country.name}</span>
-               <span id={`${country.capital}detail`}>Capital: {country.capital}</span>
-               <span id={`${country.area}detail`}>Área: {country.area}</span>
+               <span id={`${country.capital}detail`}>Capital: {empty(country.capital)?'Não possuí':country.capital}</span>
+               <span id={`${country.area}detail`}>Área: {empty(country.area)?'Não possuí':country.area} km²</span>
                <span id={`${country.population}detail`}>População: {country.population}</span>
                 
                <span id={`${country}topLeveldetail`}>Top Leven Domains:</span>
