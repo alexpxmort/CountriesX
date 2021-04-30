@@ -18,6 +18,7 @@ import {client} from '../src/config/client-graphql'
 import { GET_COUNTRIES_CLIENT } from './graphql/queries';
 
 
+
 export const filter = client.cache.makeVar("");
 
 client.writeQuery({
