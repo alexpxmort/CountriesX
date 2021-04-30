@@ -31,7 +31,7 @@ const Map = ({latitude,longitude,country}) => {
         const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [lng, lat],
+        center: [lng,lat],
         zoom: zoom
         });
 
@@ -42,8 +42,9 @@ const Map = ({latitude,longitude,country}) => {
                     let _country = filteredByName(val.countryName)   
                     
                     if(!empty(_country)){
+
                         var _marker = new mapboxgl.Marker()
-                        .setLngLat([_country[0].location.latitude,_country[0].location.longitude])
+                        .setLngLat([_country[0].location.longitude,_country[0].location.latitude])
                         .setPopup(
                             new mapboxgl.Popup({
                                 offset:25
