@@ -2,17 +2,18 @@
 
 
 import React,{useCallback, useEffect,useRef} from 'react';
-import { useQuery,useMutation } from '@apollo/react-hooks';
+import { useQuery} from '@apollo/react-hooks';
 import { useState } from 'react';
 import {CardListCountries}  from '../../components/card-list-countries/index'
 import SearchBox from '../../components/search-box';
 import { Button } from '@material-ui/core';
 import { getCounries } from '../../services/county.service';
 import Spinner from '../../components/loading/loading.compont';
-import { CLIENT_SIDE_COUNTRIES, GET_COUNTRIES_CLIENT } from '../../graphql/queries';
+import { GET_COUNTRIES_CLIENT } from '../../graphql/queries';
 import {empty} from '../../utils/string.utils'
 import {UPDATE_COUNTRY} from '../../graphql/mutations'
 import { client } from '../../config/client-graphql';
+import {useMutation} from '@apollo/client'
 
 
 const HomePage = ({history})=>{
@@ -42,12 +43,7 @@ const HomePage = ({history})=>{
   }
 
 
-      const [updateCountry] = useMutation(UPDATE_COUNTRY, { 
-        update(cache, { data:{updateCountry} }) {
-
-        
-        }
-      });
+      const [updateCountry] = useMutation(UPDATE_COUNTRY);
     
 
     const filteredData  = (!empty(data) && !empty(data.countries))? data.countries.filter((country) => 
@@ -60,7 +56,10 @@ const HomePage = ({history})=>{
 
 
     const  handleClick= useCallback(()=>{
-      updateCountry({ variables: { code: 'BR' } });
+      // updateCountry({ variables: { alpha2Code: "AX",updatedCountry:{
+      //   'name':'Teste xx',
+      //   'capital':'xxx'
+      // } } });
       let search = refInput.current.querySelector('input').value
       
       setSearchField(search)

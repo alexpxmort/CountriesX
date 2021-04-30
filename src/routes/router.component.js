@@ -8,6 +8,7 @@
  import {Route,Switch} from 'react-router-dom';
  import HomePage from '../pages/home';
  import DetailPage from '../pages/detail'
+ import {Teste} from '../teste'
  
  const  RouterX  = ()=>(
     <Switch>

@@ -63,9 +63,9 @@ const Map = ({latitude,longitude,country}) => {
         }, []);
 
         return (
-        <div>
-            <div className="map-container" ref={mapContainer} />
-        </div>
+            <div>
+                <div className="map-container" ref={mapContainer} />
+            </div>
         );
 };
 

@@ -27,9 +27,10 @@ export const COUNTRIES = gql`
 `;
 
 export const GET_COUNTRIES_CLIENT = gql`
-  query GetCountries {
-    countries
-  }
+    {
+      countries @client
+    }
+  
 `;
 
 
