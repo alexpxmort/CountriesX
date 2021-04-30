@@ -18,6 +18,8 @@ import { GET_COUNTRIES_CLIENT } from '../../graphql/queries'
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN || TOKEN_MAP_BOX;
 
+
+
 const Map = ({latitude,longitude,country}) => {
 
 
