@@ -13,7 +13,7 @@
  const  RouterX  = ()=>(
     <Switch>
         <Route exact component={HomePage} path="/"/>
-        <Route eact component={DetailPage} path="/detail/:code"/>
+        <Route  component={DetailPage} path="/detail/:code"/>
     </Switch>
  )
 

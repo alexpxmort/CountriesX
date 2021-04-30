@@ -2,10 +2,9 @@ import React,{useEffect,useState} from 'react'
 import Spinner from '../../components/loading/loading.compont'
 import Map from '../../components/map'
 import { getCounriesByAlpha2Code } from '../../services/county.service'
-
+import {empty} from '../../utils/string.utils'
 
 import './styles.css'
-import { empty } from '../../utils/string.utils'
 
 const DetailPage  = ({match})=>{
 
@@ -18,7 +17,9 @@ const DetailPage  = ({match})=>{
         initial()
     });
 
-    const code = match.params.code;
+   
+
+    const code =(empty(match))?window.location.href.split('/detail/')[0]: match.params.code;
 
     const initial = async ()=>{
       try{
@@ -42,7 +43,7 @@ const DetailPage  = ({match})=>{
         )
     }else{
         return(
-            <div className='container_card_detail' data-testid={`${country.name}detail`}>
+            <div className='container_card_detail' data-testid={`${code}detail`} id={`${code}detail`}>
                <img src={country.flag.svgFile}/>
                <span id={`${country.name}detail`}>Nome: {country.name}</span>
                <span id={`${country.capital}detail`}>Capital: {country.capital}</span>

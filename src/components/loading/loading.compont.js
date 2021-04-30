@@ -9,7 +9,7 @@
  const Spinner  = () =>{
    
      return(
-         <SpinnerOverlay>
+         <SpinnerOverlay data-testid="loading">
              <SpinnerContainer/>
          </SpinnerOverlay>
      )
