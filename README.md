@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Link do projeto:https://countriesx.herokuapp.com/
+Link do projeto:<a href="https://countriesx.herokuapp.com/" target="_blank" >https://countriesx.herokuapp.com/</a>
 
 ## Available Scripts
 
